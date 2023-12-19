@@ -9,10 +9,10 @@ describe('Řazení produktů od nejdražšího', () => {
           const priceText = price.innerText.replace('Kč', '').replace(',', '.').replace('od ', '');
           return parseFloat(priceText);
         });
-        const firstPrice = prices[0];
-        for (let i = 1; i < prices.length; i++) {
-          cy.log(`Očekáváno, že ${firstPrice} je vyšší nebo stejná jako ${prices[i]}`);
-          expect(firstPrice).to.be.at.least(prices[i]);
+        for (let i = 0; i < prices.length; i++) {
+          cy.log(`Očekáváno, že ${prices[i]} je vyšší nebo stejná jako ${prices[i+1]}`);
+          expect(prices[i]).to.be.at.least(prices[i+1]);
+          
         }
       });
     });
